@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getVendorSalesStatus } from '@/lib/storage';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const vendorId = searchParams.get('vendorId');
 
+    // Validate vendor ID
     if (!vendorId) {
       return NextResponse.json(
         { success: false, error: 'vendorId parameter is required' },
@@ -13,15 +17,11 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // For now, return static mock response as specified
-    // In production, you would use: getVendorSalesStatus(vendorId)
-    const mockResponse = {
-      totalSubscriptions: 100,
-      totalRevenueCents: 30000000,
-      totalCommissionCents: 6000000
-    };
+    // Get vendor sales status
+    const status = getVendorSalesStatus(vendorId);
 
-    return NextResponse.json(mockResponse);
+    // Return success response
+    return NextResponse.json(status);
 
   } catch (error) {
     console.error('Error getting vendor sales status:', error);

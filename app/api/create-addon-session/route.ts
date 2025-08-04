@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createAddonCheckoutSession, CreateAddonSessionRequest } from '@/lib/stripe';
 import { addAddon } from '@/lib/storage';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const body: CreateAddonSessionRequest = await request.json();

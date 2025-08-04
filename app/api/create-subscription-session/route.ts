@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createCheckoutSession, CreateSubscriptionSessionRequest } from '@/lib/stripe';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const body: CreateSubscriptionSessionRequest = await request.json();
