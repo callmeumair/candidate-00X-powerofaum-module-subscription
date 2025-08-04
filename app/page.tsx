@@ -221,7 +221,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 PowerOfAum API. Built with Next.js & Stripe.
+              © 2025 PowerOfAum API. Built with Next.js & Stripe.
             </div>
             <div className="flex items-center space-x-6">
               <a 
